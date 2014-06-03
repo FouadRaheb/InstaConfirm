@@ -23,10 +23,9 @@
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[@"https://mobile.twitter.com/" stringByAppendingString:@"iF0u4d"]]];
 } // twitter
 
--(void)mail{
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto:fouad.raheb%40gmail.com?subject=SocialDuplicator%20(1.0)%20Support"]];
-} // mail
-
+-(void)donate{
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TJ6PBN5WD73CG"]];
+} // donate link
 
 - (id)specifiers {
 	if(_specifiers == nil) {
