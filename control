@@ -1,7 +1,7 @@
 Package: com.f0u4d.instaconfirm
 Name: InstaConfirm
 Depends: firmware (>= 6.0), mobilesubstrate (>= 0.9.5000), preferenceloader
-Version: 0.1
+Version: 0.2
 Architecture: iphoneos-arm
 Description: Confirmation alert for Instagram Double Tap
 Maintainer: F0u4d <fouad.raheb@gmail.com>

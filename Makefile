@@ -1,4 +1,10 @@
+THEOS_DEVICE_IP = 192.168.1.100
+THEOS_DEVICE_PORT = 22
+
+THEOS_BUILD_DIR = packages
+
 ARCHS = armv7 arm64
+include theos/makefiles/common.mk
 
 SUBPROJECTS += InstaConfirmPrefs
 

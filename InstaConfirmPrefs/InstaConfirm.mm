@@ -1,4 +1,6 @@
 #import <Preferences/Preferences.h>
+#define plistFile @"/var/mobile/Library/Preferences/com.f0u4d.instaconfirm.plist"
+ 
 
 @interface InstaConfirmListController: PSListController {
 }
@@ -26,6 +28,23 @@
 -(void)donate{
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TJ6PBN5WD73CG"]];
 } // donate link
+
+// iOS 8 pref saving solution
+-(id)readPreferenceValue:(PSSpecifier*)specifier {
+	NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:plistFile];
+	if (!dict[specifier.properties[@"key"]]) {
+		return specifier.properties[@"default"];
+	}
+	return dict[specifier.properties[@"key"]];
+}
+-(void) setPreferenceValue:(id)value specifier:(PSSpecifier*)specifier {
+	NSMutableDictionary *defaults = [NSMutableDictionary dictionary];
+	[defaults addEntriesFromDictionary:[NSDictionary dictionaryWithContentsOfFile:plistFile]];
+	[defaults setObject:value forKey:specifier.properties[@"key"]];
+	[defaults writeToFile:plistFile atomically:YES];
+	CFStringRef mikotoPost = (CFStringRef)specifier.properties[@"PostNotification"];
+	CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(), mikotoPost, NULL, NULL, YES);
+}
 
 - (id)specifiers {
 	if(_specifiers == nil) {
